@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Local Diner — Home</title>
+  <link rel="stylesheet" href="css/global.css" />
+  <meta name="description" content="Local Diner — classic comfort food, friendly service, neighborhood vibes." />
+</head>
+<body class="page-home">
+  <header class="site-header">
+    <div class="container header-grid">
+      <a class="brand" href="index.html" aria-label="Local Diner home">
+        <!-- Inline SVG logo asset -->
+        <img src="assets/logo.webp" alt="Local Diner logo" class="logo" />
+        <span class="brand-text">Local Diner</span>
+      </a>
+
+      <button id="nav-toggle" class="nav-toggle" aria-controls="primary-nav" aria-expanded="false" aria-label="Open navigation">
+        <span class="hamburger">
+          <span class="bar bar-top"></span>
+          <span class="bar bar-mid"></span>
+          <span class="bar bar-bot"></span>
+        </span>
+      </button>
+
+      <nav id="primary-nav" class="primary-nav" aria-hidden="true">
+        <ul class="nav-list">
+          <li><a href="index.html" class="active">Home</a></li>
+          <li><a href="menu.html">Menu</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <h1>Comfort Food, Neighborhood Heart</h1>
+          <p class="lead">Open daily for breakfast, lunch, and dinner. Locally sourced ingredients, classic recipes, and a warm welcome.</p>
+          <p class="cta-row">
+            <a class="btn btn-primary" href="menu.html">View Menu</a>
+            <a class="btn btn-outline" href="contact.html">Reserve a Table</a>
+          </p>
+        </div>
+        <div class="hero-art">
+          <!-- Decorative SVG placeholder -->
+          <img src="assets/hero.webp" alt="" class="hero-illustration" />
+        </div>
+      </div>
+    </section>
+
+    <section class="features">
+      <div class="container features-grid">
+        <article class="feature">
+          <img src="assets/breakfast.webp" alt="" class="menu-img" />
+          <h3>All Day Breakfast</h3>
+          <p>Fluffy pancakes, savory omelettes, and coffee brewed fresh every hour.</p>
+        </article>
+
+        <article class="feature">
+          <img src="assets/seasonal.webp" alt="" class="menu-img" />
+          <h3>Seasonal Ingredients</h3>
+          <p>We partner with local farms to bring seasonal produce to your plate.</p>
+        </article>
+
+        <article class="feature">
+          <img src="assets/cozy.webp" alt="" class="menu-img" />
+          <h3>Cozy Space</h3>
+          <p>Comfortable booths, friendly staff, and a place to slow down.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="menu-preview">
+      <div class="container">
+        <h2>Popular Dishes</h2>
+        <div class="menu-grid">
+          <article class="menu-card">
+            <img src="assets/burger.webp" alt="Classic Burger" class="menu-img" />
+            <div class="menu-body">
+              <h4>Classic Burger</h4>
+              <p class="price">$12</p>
+              <p class="desc">Grass-fed beef, cheddar, house pickles, brioche bun.</p>
+            </div>
+          </article>
+
+          <article class="menu-card">
+            <img src="assets/pancakes.webp" alt="Buttermilk Pancakes" class="menu-img" />
+            <div class="menu-body">
+              <h4>Buttermilk Pancakes</h4>
+              <p class="price">$9</p>
+              <p class="desc">Stack of three with maple butter and seasonal fruit.</p>
+            </div>
+          </article>
+
+          <article class="menu-card">
+            <img src="assets/chicken.webp" alt="Roast Chicken" class="menu-img" />
+            <div class="menu-body">
+              <h4>Herb Roast Chicken</h4>
+              <p class="price">$16</p>
+              <p class="desc">Slow-roasted, served with roasted root vegetables.</p>
+            </div>
+          </article>
+        </div>
+        <p class="center"><a class="btn btn-secondary" href="menu.html">See Full Menu</a></p>
+      </div>
+    </section>
+
+    <section class="testimonials">
+      <div class="container">
+        <h2>What Neighbors Say</h2>
+        <div class="test-grid">
+          <blockquote class="testimonial">
+            <p>"Best pancakes in town. The staff always remembers my order."</p>
+            <cite>— Jamie R.</cite>
+          </blockquote>
+
+          <blockquote class="testimonial">
+            <p>"Cozy spot for family dinners. The roast chicken is a must-try."</p>
+            <cite>— Marcus L.</cite>
+          </blockquote>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div class="footer-col">
+        <img src="assets/logo.webp" alt="Local Diner logo" class="small" />
+        <p>123 Main Street, Green IN 46140</p>
+        <p>Open daily 7am–9pm</p>
+      </div>
+
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <ul class="footer-links">
+          <li><a href="menu.html">Menu</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <p><a href="tel:+11234567890">+1 (123) 456-7890</a></p>
+        <p><a href="mailto:hello@localdiner.example">hello@localdiner.example</a></p>
+      </div>
+    </div>
+    <div class="container copyright">
+      <small>© <span id="year"></span> Local Diner</small>
+    </div>
+  </footer>
+
+  <script src="js/scripts.js" defer></script>
+</body>
+</html>

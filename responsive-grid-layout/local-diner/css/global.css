@@ -1,0 +1,401 @@
+/* global.css
+   Complete mobile-first stylesheet for Local Diner
+   - Ensures mobile nav toggle is visible and aria-hidden state controls display
+   - Modern grid layout, responsive breakpoints, accessible hamburger animation
+   Save as css/global.css
+*/
+
+/* =========================
+   Root variables and reset
+   ========================= */
+:root{
+  --bg: #ffffff;
+  --text: #111827;
+  --muted: #6b7280;
+  --accent: #d97706;
+  --accent-2: #2563eb;
+  --surface: #f8fafc;
+  --card-bg: #ffffff;
+  --container: 1100px;
+  --gap: 1rem;
+  --radius: 12px;
+  --shadow: 0 8px 24px rgba(16,24,40,0.06);
+  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  font-size: 16px;
+  color-scheme: light;
+}
+
+* { box-sizing: border-box; }
+html, body { height: 100%; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: 1.45;
+  font-size: 16px;
+}
+
+/* =========================
+   Layout container
+   ========================= */
+.container {
+  width: 100%;
+  padding: 0 1rem;
+  margin: 0 auto;
+  max-width: var(--container);
+}
+
+/* =========================
+   Header and brand
+   ========================= */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 60;
+  background: linear-gradient(180deg, rgba(255,255,255,0.95), rgba(255,255,255,0.9));
+  border-bottom: 1px solid #eee;
+  backdrop-filter: blur(6px);
+}
+
+.header-grid {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 0.75rem;
+  align-items: center;
+  padding: 0.75rem 0;
+}
+
+/* Brand */
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  text-decoration: none;
+  color: var(--text);
+}
+.logo { width: 132px; height: auto; display: block; }
+.brand-text { font-weight: 700; font-size: 1.05rem; letter-spacing: 0.2px; }
+
+/* =========================
+   Navigation: mobile-first
+   ========================= */
+
+/* Nav toggle (hamburger) - visible by default on mobile */
+.nav-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: 0;
+  padding: 0.25rem;
+  cursor: pointer;
+  line-height: 0;
+}
+
+/* Hamburger bars */
+.hamburger {
+  width: 28px;
+  height: 20px;
+  position: relative;
+  display: inline-block;
+}
+.bar {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--text);
+  border-radius: 3px;
+  transition: transform 260ms cubic-bezier(.2,.9,.2,1), opacity 200ms ease;
+}
+.bar-top { top: 0; }
+.bar-mid { top: 50%; transform: translateY(-50%); }
+.bar-bot { bottom: 0; }
+
+/* When toggle has .open, animate to X */
+.nav-toggle.open .bar-top { transform: translateY(9px) rotate(45deg); }
+.nav-toggle.open .bar-mid { opacity: 0; transform: scaleX(0.9); }
+.nav-toggle.open .bar-bot { transform: translateY(-9px) rotate(-45deg); }
+
+/* Primary nav container - mobile overlay style */
+.primary-nav {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 64px;
+  background: var(--bg);
+  transform: translateY(-100%);
+  transition: transform 320ms cubic-bezier(.2,.9,.2,1), opacity 220ms ease;
+  box-shadow: var(--shadow);
+  padding: 1rem;
+  z-index: 50;
+  /* ensure it doesn't block layout when hidden */
+  will-change: transform, opacity;
+}
+
+/* Respect aria-hidden state: hidden -> not displayed; visible -> displayed */
+.primary-nav[aria-hidden="true"] {
+  display: none;
+  visibility: hidden;
+  opacity: 0;
+  transform: translateY(-8px);
+}
+.primary-nav[aria-hidden="false"] {
+  display: block;
+  visibility: visible;
+  opacity: 1;
+  transform: translateY(0);
+  max-height: calc(100vh - 80px);
+  overflow-y: auto;
+}
+
+/* Nav list: stacked on mobile */
+.nav-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.5rem;
+}
+.nav-list li { margin: 0; }
+.nav-list a {
+  display: block;
+  padding: 0.75rem 1rem;
+  border-radius: 10px;
+  text-decoration: none;
+  color: var(--text);
+  font-weight: 700;
+  background: transparent;
+}
+.nav-list a.active {
+  background: linear-gradient(90deg, var(--accent), var(--accent-2));
+  color: #fff;
+}
+
+/* Ensure nav items are not clipped by parent containers */
+.site-header, .primary-nav { overflow: visible; }
+
+/* =========================
+   Hero and sections
+   ========================= */
+.hero {
+  padding: 2rem 0;
+}
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.25rem;
+  align-items: center;
+}
+.hero-copy h1 {
+  margin: 0 0 0.5rem 0;
+  font-size: 1.6rem;
+}
+.lead { color: var(--muted); margin: 0 0 1rem 0; }
+.cta-row { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+.hero-art { display: flex; justify-content: center; }
+.hero-illustration { width: 100%; max-width: 420px; height: auto; }
+
+/* Features */
+.features { padding: 1.25rem 0; }
+.features-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+.feature {
+  background: var(--card-bg);
+  padding: 1rem;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+}
+.feature h3 { margin: 0; font-size: 1.05rem; }
+.feature p { margin: 0; color: var(--muted); }
+
+/* Menu preview */
+.menu-preview { padding: 1.25rem 0; }
+.menu-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+.menu-card {
+  display: grid;
+  grid-template-columns: 96px 1fr;
+  gap: 0.75rem;
+  align-items: center;
+  background: var(--card-bg);
+  padding: 0.75rem;
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+}
+.menu-img { width: 96px; height: 96px; object-fit: cover; border-radius: 8px; }
+.menu-body h4 { margin: 0; }
+.price { font-weight: 700; color: var(--accent); margin-top: 0.25rem; }
+.center { text-align: center; }
+
+/* Testimonials */
+.testimonials { padding: 1.25rem 0; }
+.test-grid { display: grid; gap: 1rem; }
+.testimonial { background: var(--surface); padding: 1rem; border-radius: 10px; }
+.testimonial p { margin: 0; color: var(--text); }
+.testimonial cite { display: block; margin-top: 0.5rem; color: var(--muted); }
+
+/* Footer */
+.site-footer {
+  border-top: 1px solid #eee;
+  padding: 1.25rem 0 2rem;
+  margin-top: 2rem;
+}
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+.footer-col .small { width: 36px; height: 36px; display: block; }
+.footer-links { list-style: none; padding: 0; margin: 0; }
+.footer-links li { margin: 0.25rem 0; }
+
+/* Buttons */
+.btn {
+  display: inline-block;
+  padding: 0.6rem 0.9rem;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 700;
+  border: 0;
+  cursor: pointer;
+}
+.btn-primary { background: linear-gradient(90deg, var(--accent), var(--accent-2)); color: #fff; }
+.btn-secondary { background: #111; color: #fff; }
+.btn-outline { background: transparent; border: 1px solid #e6e6e6; color: var(--text); }
+
+/* Forms */
+.contact-grid { display: grid; gap: 1rem; }
+.contact-form {
+  display: grid;
+  gap: 0.5rem;
+  background: var(--card-bg);
+  padding: 1rem;
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+}
+.contact-form label { font-weight: 700; color: var(--muted); }
+.contact-form input, .contact-form textarea {
+  padding: 0.6rem;
+  border-radius: 8px;
+  border: 1px solid #e6e6e6;
+  font: inherit;
+}
+.form-actions { display: flex; gap: 0.5rem; align-items: center; }
+.form-status { color: var(--muted); margin-top: 0.5rem; }
+
+/* Team */
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.25rem;
+  margin-top: 2rem;
+}
+
+.team-card {
+  background: var(--card-bg);
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+  text-align: center;
+  padding: 1rem;
+}
+
+.team-thumb {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-bottom: 0.75rem;
+  display: block;
+}
+
+/* Menu list and cards */
+.menu-list { display: grid; gap: 0.75rem; }
+.menu-item {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 1rem;
+  padding: 0.75rem;
+  border-radius: 10px;
+  background: var(--surface);
+}
+.menu-item-left h3 { margin: 0; }
+.menu-grid-cards { display: grid; grid-template-columns: 1fr; gap: 1rem; }
+.menu-card-large {
+  display: grid;
+  grid-template-columns: 120px 1fr;
+  gap: 0.75rem;
+  padding: 0.75rem;
+  border-radius: 12px;
+  background: var(--card-bg);
+  box-shadow: var(--shadow);
+}
+.menu-card-large .menu-img { width: 120px; height: 96px; object-fit: cover; border-radius: 8px; }
+
+/* Map */
+.contact-map {
+  margin-top: 2rem;
+}
+
+.map-thumb {
+  width: 100%;
+  max-width: 900px;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+  display: block;
+  margin-inline: auto;
+}
+
+/* =========================
+   Desktop and larger screens
+   ========================= */
+@media (min-width: 720px) {
+  .header-grid { grid-template-columns: auto 1fr auto; align-items: center; }
+  /* Desktop: show nav inline and hide mobile toggle */
+  .primary-nav { position: static; transform: none; background: transparent; padding: 0; box-shadow: none; top: auto; }
+  .primary-nav[aria-hidden="true"], .primary-nav[aria-hidden="false"] { display: block; visibility: visible; opacity: 1; transform: none; }
+  .nav-list { display: flex; gap: 0.5rem; align-items: center; }
+  .nav-toggle { display: none; }
+
+  .hero-grid { grid-template-columns: 1fr 420px; }
+  .features-grid { grid-template-columns: repeat(3, 1fr); }
+  .menu-grid { grid-template-columns: repeat(3, 1fr); }
+  .test-grid { grid-template-columns: repeat(2, 1fr); }
+  .footer-grid { grid-template-columns: 1fr 1fr 1fr; }
+  .team-grid { grid-template-columns: repeat(3, 1fr); }
+  .menu-grid-cards { grid-template-columns: repeat(3, 1fr); }
+}
+
+/* Larger desktop */
+@media (min-width: 1100px) {
+  .container { max-width: 1200px; }
+  .hero-copy h1 { font-size: 2rem; }
+}
+
+/* =========================
+   Small accessibility helpers
+   ========================= */
+/* Ensure focus outlines are visible */
+a:focus, button:focus, input:focus, textarea:focus {
+  outline: 3px solid rgba(37,99,235,0.18);
+  outline-offset: 2px;
+  border-radius: 8px;
+}
+
+/* Prevent accidental clipping of nav items inside header */
+.site-header { overflow: visible; }
+
+/* End of file */
