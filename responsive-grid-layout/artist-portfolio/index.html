@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Artist Portfolio – Home</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Premium responsive portfolio for a generic artist." />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="logo">
+      <span class="logo-mark"></span>
+      <span class="logo-text">Generic Artist</span>
+    </div>
+    <button class="nav-toggle" aria-label="Toggle navigation">
+      <span></span><span></span>
+    </button>
+    <nav class="site-nav">
+      <a href="index.html" class="active">Home</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-content">
+        <h1>Visual stories in motion.</h1>
+        <p>
+          A curated selection of abstract, minimal, and experimental works by a generic artist—
+          crafted for the modern web.
+        </p>
+        <div class="hero-actions">
+          <a href="gallery.html" class="btn primary">View Gallery</a>
+          <a href="about.html" class="btn ghost">Learn More</a>
+        </div>
+      </div>
+      <div class="hero-media">
+        <!-- SVG hero placeholder -->
+        <svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg" class="hero-svg">
+          <defs>
+            <linearGradient id="gradHero" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#ff6b6b" />
+              <stop offset="50%" stop-color="#feca57" />
+              <stop offset="100%" stop-color="#48dbfb" />
+            </linearGradient>
+          </defs>
+          <rect x="0" y="0" width="400" height="300" fill="#111827" />
+          <circle cx="90" cy="80" r="55" fill="url(#gradHero)" />
+          <rect x="180" y="40" width="180" height="80" rx="12" fill="#1f2937" />
+          <rect x="200" y="60" width="60" height="12" rx="6" fill="#e5e7eb" />
+          <rect x="200" y="80" width="120" height="10" rx="5" fill="#6b7280" />
+          <rect x="40" y="170" width="320" height="90" rx="18" fill="#111827" stroke="#374151" />
+          <line x1="70" y1="190" x2="330" y2="190" stroke="#4b5563" stroke-width="2" />
+          <line x1="70" y1="215" x2="330" y2="215" stroke="#4b5563" stroke-width="2" />
+          <line x1="70" y1="240" x2="230" y2="240" stroke="#4b5563" stroke-width="2" />
+        </svg>
+      </div>
+    </section>
+
+    <section class="section featured">
+      <div class="section-header">
+        <h2>Featured works</h2>
+        <p>Selected pieces that explore color, geometry, and subtle motion.</p>
+      </div>
+      <div class="grid grid-featured">
+        <article class="card artwork-card">
+          <div class="card-media">
+            <img src="assets/placeholder.svg" alt="Artwork placeholder" />
+          </div>
+          <div class="card-body">
+            <h3>Chromatic Echoes</h3>
+            <p>Layered gradients and soft noise to evoke digital nostalgia.</p>
+          </div>
+        </article>
+        <article class="card artwork-card">
+          <div class="card-media">
+            <img src="assets/placeholder.svg" alt="Artwork placeholder" />
+          </div>
+          <div class="card-body">
+            <h3>Silent Geometry</h3>
+            <p>Minimal shapes arranged in a quiet, contemplative composition.</p>
+          </div>
+        </article>
+        <article class="card artwork-card">
+          <div class="card-media">
+            <img src="assets/placeholder.svg" alt="Artwork placeholder" />
+          </div>
+          <div class="card-body">
+            <h3>Neon Fragments</h3>
+            <p>High-contrast fragments that feel like a city at midnight.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section split">
+      <div class="split-text">
+        <h2>Process, not perfection.</h2>
+        <p>
+          Each piece begins as a sketch—digital or analog—and evolves through iteration.
+          The focus is on rhythm, balance, and the tension between order and chaos.
+        </p>
+        <p>
+          This portfolio is built as a responsive grid layout, ready to be forked, remixed,
+          and deployed as a GitHub Pages site.
+        </p>
+        <a href="https://github.com" target="_blank" rel="noopener" class="btn secondary">
+          View on GitHub
+        </a>
+      </div>
+      <div class="split-media">
+        <div class="stacked-cards">
+          <div class="stack-card">
+            <img src="assets/placeholder.svg" alt="Process sketch placeholder" />
+          </div>
+          <div class="stack-card offset">
+            <img src="assets/placeholder.svg" alt="Process sketch placeholder" />
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>© <span id="year"></span> Generic Artist. All rights reserved.</p>
+    <p class="footer-meta">Built with HTML, CSS, and JS · Responsive grid layout · Ready for GitHub Pages.</p>
+  </footer>
+
+  <script src="js/script.js"></script>
+</body>
+</html>
