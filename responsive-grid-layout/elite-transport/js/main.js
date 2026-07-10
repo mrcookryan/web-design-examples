@@ -210,3 +210,42 @@ document.querySelectorAll('a[href^="#"]').forEach(link => {
   };
   window.addEventListener('scroll', onScroll, { passive: true });
 })();
+
+
+/* Auto-counting stats */
+document.addEventListener("DOMContentLoaded", () => {
+  const counters = document.querySelectorAll(".stat-item__number");
+
+  const animateCount = (el) => {
+    const target = parseInt(el.dataset.count, 10);
+    let current = 0;
+    const duration = 1200; // ms
+    const step = Math.ceil(target / (duration / 16)); // ~60fps
+
+    const tick = () => {
+      current += step;
+      if (current >= target) {
+        el.textContent = target.toLocaleString();
+      } else {
+        el.textContent = current.toLocaleString();
+        requestAnimationFrame(tick);
+      }
+    };
+
+    tick();
+  };
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          animateCount(entry.target);
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.4 }
+  );
+
+  counters.forEach((counter) => observer.observe(counter));
+});

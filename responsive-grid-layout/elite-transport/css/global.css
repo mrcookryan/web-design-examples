@@ -343,7 +343,7 @@ ul, ol { padding-left: 1.25rem; }
 }
 .divider--center { margin-inline: auto; }
 
-/* ── Stat strip ──────────────────────────────────────────────── */
+/* ── Stat strip (auto-calculating animation) ─────────────────── */
 .stat-strip {
   display: flex;
   flex-wrap: wrap;
@@ -353,20 +353,63 @@ ul, ol { padding-left: 1.25rem; }
   background: var(--navy-dark);
   border-radius: var(--radius-lg);
 }
+
 .stat-item {
   text-align: center;
   flex: 1 1 120px;
+  position: relative;
 }
+
+/* Number animation + shimmer */
 .stat-item__number {
   font-size: 2.25rem;
   font-weight: 800;
   color: var(--teal);
   line-height: 1;
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
 }
+
+/* Shimmer effect */
+.stat-item__number::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255,255,255,0.25),
+    transparent
+  );
+  transform: translateX(-100%);
+  animation: shimmer 2.2s infinite;
+  pointer-events: none;
+}
+
+@keyframes shimmer {
+  0%   { transform: translateX(-100%); }
+  60%  { transform: translateX(120%); }
+  100% { transform: translateX(120%); }
+}
+
 .stat-item__label {
   font-size: .85rem;
   color: rgba(255,255,255,.7);
   margin-top: .25rem;
+}
+
+/* Fade-up reveal (already in your file, extended for stats) */
+@media (prefers-reduced-motion: no-preference) {
+  .stat-item.fade-up {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity .55s ease, transform .55s ease;
+  }
+  .stat-item.fade-up.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* ── Icon Box ────────────────────────────────────────────────── */
