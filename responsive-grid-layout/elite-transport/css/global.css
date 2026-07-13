@@ -552,7 +552,7 @@ textarea { resize: vertical; min-height: 110px; }
   flex-shrink: 0;
 }
 .nav-logo__text {
-  font-size: 1.1rem;
+  font-size: 1.7rem;
   font-weight: 800;
   color: var(--white);
   letter-spacing: -.01em;
@@ -933,6 +933,19 @@ textarea { resize: vertical; min-height: 110px; }
 .breadcrumb a:hover { text-decoration: underline; }
 
 /* ── Quote Form Wrapper ───────────────────────────────────────── */
+.quote-layout {
+  display: flex;
+  gap: 2.5rem;
+  align-items: flex-start;
+}
+
+/* Sidebar column width on desktop */
+.quote-sidebar {
+  flex: 0 0 320px;
+  position: sticky;
+  top: 100px;
+}
+
 .quote-form-wrapper {
   background: var(--white);
   border-radius: var(--radius-lg);
@@ -940,6 +953,8 @@ textarea { resize: vertical; min-height: 110px; }
   box-shadow: var(--shadow-lg);
   max-width: 860px;
   margin-inline: auto;
+  flex: 1 1 auto;
+  min-width: 0;
 }
 
 .form-section-title {
@@ -1020,6 +1035,24 @@ textarea { resize: vertical; min-height: 110px; }
 
 @media (max-width: 768px) {
   .footer-grid { grid-template-columns: 1fr 1fr; }
+
+  .quote-layout {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .quote-sidebar {
+    flex: 1 1 auto;
+    width: 100%;
+    position: static;
+    order: 2; /* sidebar appears under the form */
+    margin-top: 1rem;
+  }
+
+  .quote-form-wrapper {
+    width: 100%;
+  }
+
 }
 @media (max-width: 480px) {
   .footer-grid { grid-template-columns: 1fr; }
